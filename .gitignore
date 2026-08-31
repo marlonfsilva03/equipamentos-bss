@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.streamlit/secrets.toml
+
+# Planilhas com dados reais da obra - não versionar (dados sensíveis).
+# Use o botão de upload dentro do app para carregá-las depois do deploy.
+*.xlsm
+*.xlsx
