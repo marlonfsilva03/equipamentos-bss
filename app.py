@@ -364,11 +364,13 @@ with tab_horas:
             .sum().reset_index().sort_values("HORAS_TRABALHADAS", ascending=False).head(20)
         )
         if not ranking.empty:
+            ranking["EQUIPAMENTO"] = ranking["EQUIPAMENTO"].astype(str)
             fig6 = px.bar(
                 ranking, x="HORAS_TRABALHADAS", y="EQUIPAMENTO", orientation="h", color="TIPO",
                 title="Top 20 Equipamentos por Horas Trabalhadas (no período filtrado)",
             )
-            fig6.update_layout(yaxis={"categoryorder": "total ascending"}, height=600)
+            fig6.update_yaxes(type="category", categoryorder="total ascending")
+            fig6.update_layout(height=600)
             st.plotly_chart(fig6, width='stretch')
 
         st.subheader(f"Detalhamento por Equipamento e Período ({len(horas)})")
